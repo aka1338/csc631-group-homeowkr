@@ -1497,6 +1497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1839817061}
   offset: {x: 0, y: 1, z: -5}
+  topDown: {x: 0, y: 15, z: 0}
+  y: 90
 --- !u!1001 &727819060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2935,7 +2937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1839817057}
   tf: {fileID: 0}
-  forwardForce: 8000
+  forwardForce: 3000
   sideWayForce: 120
   jumpForce: 3
   bc: {fileID: 0}
