@@ -7,14 +7,12 @@
  public class Button : MonoBehaviour {
  
     [SerializeField] UnityEvent anEvent; // puts an easy to setup event in the inspector and anEvent references it so you can .Invoke() it
-    private AssetBundle myLoadedAssetBundle;
-    private string[] scenePaths;
+    public int index; 
 
     // Use this for initialization
     void Start()
     {
-        myLoadedAssetBundle = AssetBundle.LoadFromFile("Assets/AssetBundles/scenes");
-        scenePaths = myLoadedAssetBundle.GetAllScenePaths();
+
     }
 
      // This captures a click as long as you have a collider, even if it's set to just be a trigger, and nothing blocking it.
@@ -24,9 +22,8 @@
      private void OnMouseDown()
      {
          print("You clicked the cube!");
-         Debug.Log("Scene2 loading: " + scenePaths[0]);
-         SceneManager.LoadScene(scenePaths[0], LoadSceneMode.Single);
-         anEvent.Invoke(); // Triggers the events you have setup in the inspector
+         Debug.Log("Scene loading...");
+         SceneManager.LoadScene(index);
      }
  
      // This is the first method the event is setup to do, the second audio part needed no script to just do a one shot effect, thanks to the event system.
