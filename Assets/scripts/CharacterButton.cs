@@ -9,7 +9,7 @@ public class CharacterButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("KickButton")){
+        if (Input.GetKey("r")) {
             character.GetComponent<Animator>().Play("Mma Kick");
         }
     }
