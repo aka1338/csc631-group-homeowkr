@@ -10,12 +10,12 @@ public class SunLight : MonoBehaviour
 
         if (Input.GetKey("q"))
         {
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 1.0f, transform.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x + 1.0f, transform.eulerAngles.y, transform.eulerAngles.z);
         }
 
         if (Input.GetKey("e"))
         {
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 1.0f, transform.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x - 1.0f, transform.eulerAngles.y, transform.eulerAngles.z);
         }
     }
 }
