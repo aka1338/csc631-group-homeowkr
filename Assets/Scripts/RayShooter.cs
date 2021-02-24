@@ -35,7 +35,7 @@ public class RayShooter : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(SphereIndicator(hit.point));
+                   // StartCoroutine(SphereIndicator(hit.point));
                 }
             }
         }
