@@ -21,24 +21,24 @@ public class Client : MonoBehaviour
         {
             instance = this;
         }
-        else if (instance != this) 
+        else if (instance != this)
         {
-            Debug.Log("Instance already exists. Destroying object!");
+            Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
     }
 
     private void Start()
     {
-        tcp = new TCP(); 
+        tcp = new TCP();
     }
 
-    public void ConnectToServer() 
+    public void ConnectToServer()
     {
         tcp.Connect();
     }
 
-    public class TCP 
+    public class TCP
     {
         public TcpClient socket;
 
@@ -61,43 +61,37 @@ public class Client : MonoBehaviour
         {
             socket.EndConnect(_result);
 
-            if (!socket.Connected) {
+            if (!socket.Connected)
+            {
                 return;
             }
 
             stream = socket.GetStream();
 
-            stream.BeginRead(receiveBuffer, 0, dataBufferSize, RecieveCallback, null);
+            stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
         }
-    
-        private void RecieveCallback(IAsyncResult _result)
+
+        private void ReceiveCallback(IAsyncResult _result)
         {
             try
             {
                 int _byteLength = stream.EndRead(_result);
                 if (_byteLength <= 0)
                 {
-                    //TODO: disconnect
+                    // TODO: disconnect
                     return;
                 }
 
                 byte[] _data = new byte[_byteLength];
                 Array.Copy(receiveBuffer, _data, _byteLength);
 
-                // TODO: handle data 
-                stream.BeginRead(receiveBuffer, 0, dataBufferSize, RecieveCallback, null);
+                // TODO: handle data
+                stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
             }
-
-            catch 
+            catch
             {
-               
-
+                // TODO: disconnect
             }
-
-
         }
-
     }
-
- 
 }

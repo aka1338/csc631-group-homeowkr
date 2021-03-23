@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameServer
 {
@@ -12,9 +8,9 @@ namespace GameServer
         {
             Console.Title = "Game Server";
 
-            Server.Start(50, 26950); 
+            Server.Start(50, 26950);
 
-            Console.ReadKey(); 
+            Console.ReadKey();
         }
     }
 }

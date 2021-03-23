@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public GameObject startMenu; 
+    public GameObject startMenu;
     public InputField usernameField;
 
     private void Awake()
@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            Debug.Log("Instance already exists. Destroying object!");
+            Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
     }
