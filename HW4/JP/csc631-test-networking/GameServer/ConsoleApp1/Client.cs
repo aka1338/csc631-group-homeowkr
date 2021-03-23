@@ -15,6 +15,12 @@ namespace GameServer
         public int id;
         public TCP tcp;
 
+        public Client(int _clientId)
+        {
+            id = _clientId;
+            tcp = new TCP(id); 
+        }
+
         public class TCP 
         {
             public TcpClient socket;
@@ -37,7 +43,7 @@ namespace GameServer
                 stream = socket.GetStream();
                  
                 recieveBuffer = new byte[dataBufferSize];
-                stream.BeginRead(recieveBuffer, 0, dataBufferSize, ReceiveCallback, null); 
+                stream.BeginRead(recieveBuffer, 0, dataBufferSize, RecieveCallback, null); 
 
                 // TODO: send welcome packet 
             
@@ -55,10 +61,10 @@ namespace GameServer
                     }
 
                     byte[] _data = new byte[_byteLength];
-                    Array.Copy(recieveBuffer, _data, _byteLength); 
+                    Array.Copy(recieveBuffer, _data, _byteLength);
 
                     // TODO: handle data 
-
+                    stream.BeginRead(recieveBuffer, 0, dataBufferSize, RecieveCallback, null); 
                 }
 
                 catch (Exception _ex) 
