@@ -221,7 +221,7 @@ public class Client : MonoBehaviour
                 HandleData(_data); 
 
             }
-            catch (Exception _ex)
+            catch 
             {
 
             }
@@ -249,7 +249,8 @@ public class Client : MonoBehaviour
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
-            { (int)ServerPackets.welcome, ClientHandle.Welcome }
+            { (int)ServerPackets.welcome, ClientHandle.Welcome },
+            { (int)ServerPackets.udpTest, ClientHandle.UDPTest }
         };
         Debug.Log("Initialized packets.");
     }

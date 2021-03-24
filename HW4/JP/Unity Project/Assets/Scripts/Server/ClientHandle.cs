@@ -14,4 +14,12 @@ public class ClientHandle : MonoBehaviour
 
         ClientSend.WelcomeRecieived();
     }
+    
+    public static void UDPTest(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+
+        Debug.Log($"Received packet via UDP. Contains message: {_msg}");
+        ClientSend.UDPTestReceived(); 
+    }
 }
