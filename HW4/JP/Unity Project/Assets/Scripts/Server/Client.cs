@@ -182,6 +182,27 @@ public class Client : MonoBehaviour
 
             socket.Connect(endPoint);
             socket.BeginReceive(ReceiveCallback, null);
+
+            using (Packet _packet = new Packet())
+            {
+                SendData(_packet); 
+            }
+        }
+
+        public void SendData(Packet _packet)
+        {
+            try
+            {
+                _packet.InsertInt(instance.myId);
+                if (socket != null)
+                {
+                    socket.BeginSend(_packet.ToArray(), _packet.Length(), null, null); 
+                }
+            }
+            catch (Exception _ex)
+            {
+                Debug.Log($"Error sending data to server via UDP: {_ex}"); 
+            }
         }
 
         private void ReceiveCallback(IAsyncResult _result)
@@ -197,12 +218,31 @@ public class Client : MonoBehaviour
                     return; 
                 }
 
+                HandleData(_data); 
+
             }
             catch (Exception _ex)
             {
 
-                throw;
             }
+        }
+
+        private void HandleData(byte[] _data)
+        {
+            using (Packet _packet = new Packet(_data))
+            {
+                int _packetLength = _packet.ReadInt();
+                _data = _packet.ReadBytes(_packetLength); 
+            }
+
+            ThreadManager.ExecuteOnMainThread(() =>
+            {
+                using (Packet _packet = new Packet(_data))
+                {
+                    int _packetId = _packet.ReadInt();
+                    packetHandlers[_packetId](_packet); 
+                }
+            }); 
         }
     }
     private void InitializeClientData()

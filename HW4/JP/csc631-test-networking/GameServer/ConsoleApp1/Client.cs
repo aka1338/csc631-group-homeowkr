@@ -12,11 +12,13 @@ namespace GameServer
 
         public int id;
         public TCP tcp;
+        public UDP udp; 
 
         public Client(int _clientId)
         {
             id = _clientId;
             tcp = new TCP(id);
+            udp = new UDP(id); 
         }
 
         public class TCP
@@ -131,6 +133,18 @@ namespace GameServer
                 }
 
                 return false;
+            }
+        }
+
+        public class UDP
+        {
+            public IPEndPoint endPoint;
+
+            private int id; 
+
+            public UDP(int _id)
+            {
+                id = _id; 
             }
         }
     }
