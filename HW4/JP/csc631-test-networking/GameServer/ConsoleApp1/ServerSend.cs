@@ -44,9 +44,9 @@ namespace GameServer
         private static void SendUDPDataToAll(Packet _packet)
         {
             _packet.WriteLength();
-            for (int i = 0; i <= Server.MaxPlayers; i++)
+            for (int i = 1; i <= Server.MaxPlayers; i++)
             {
-                Server.clients[i].udp.SendData(_packet); 
+                Server.clients[i].udp.SendData(_packet);
             }
         }
 
@@ -76,13 +76,38 @@ namespace GameServer
             
         }
 
-        public static void UDPTest(int _toClient)
+        public static void SpawnPlayer(int _toClient, Player _player)
         {
-            using (Packet _packet = new Packet((int)ServerPackets.udpTest))
+            using (Packet _packet = new Packet((int)ServerPackets.spawnPlayer))
             {
-                _packet.Write("A test packet for UDP.");
+                _packet.Write(_player.id);
+                _packet.Write(_player.username);
+                _packet.Write(_player.position);
 
-                SendUDPData(_toClient, _packet); 
+                _packet.Write(_player.rotation);
+
+                SendTCPData(_toClient, _packet);
+            }
+        }
+
+        public static void PlayerPosition(Player _player) 
+        { 
+            using (Packet _packet = new Packet((int)ServerPackets.playerPosition))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.position);
+
+                SendUDPDataToAll(_packet); 
+            }
+        }
+        public static void PlayerRotation(Player _player) 
+        { 
+            using (Packet _packet = new Packet((int)ServerPackets.playerRotation))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.rotation);
+
+                SendUDPDataToAll(_packet); 
             }
         }
         #endregion

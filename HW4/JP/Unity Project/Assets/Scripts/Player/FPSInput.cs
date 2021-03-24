@@ -16,7 +16,7 @@ public class FPSInput : MonoBehaviour
         _charController = GetComponent<CharacterController>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
@@ -26,5 +26,19 @@ public class FPSInput : MonoBehaviour
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
         _charController.Move(movement);
+    }
+
+    private void SendInputToServer() {
+
+        bool[] _inputs = new bool[]
+        {
+            Input.GetKey(KeyCode.W),
+            Input.GetKey(KeyCode.S),
+            Input.GetKey(KeyCode.A),
+            Input.GetKey(KeyCode.D),
+        };
+
+        ClientSend.PlayerMovement(_inputs); 
+    
     }
 }
