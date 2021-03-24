@@ -46,7 +46,20 @@ namespace GameServer
 
                 // TODO: send welcome packet
             }
+            public void SendData(Packet _packet) {
+                try
+                {
+                    if (socket != null)
+                    {
+                        stream.BeginWrite(_packet.ToArray(), 0, _packet.Length(, null, null); 
+                    }
+                }
+                catch (Exception)
+                {
 
+                    throw;
+                }
+            }
             private void ReceiveCallback(IAsyncResult _result)
             {
                 try
