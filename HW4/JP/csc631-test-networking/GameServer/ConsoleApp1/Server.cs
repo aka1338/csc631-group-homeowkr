@@ -31,6 +31,7 @@ namespace GameServer
             tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
 
             udpListener = new UdpClient(Port);
+
             udpListener.BeginReceive(UDPReceiveCallback, null); 
             Console.WriteLine($"Server started on port {Port}.");
         }

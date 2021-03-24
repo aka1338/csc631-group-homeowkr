@@ -169,7 +169,7 @@ public class Client : MonoBehaviour
     public class UDP
     {
         public UdpClient socket;
-        public IPEndPoint endPoint; 
+        public IPEndPoint endPoint;
 
         public UDP()
         {
@@ -185,7 +185,7 @@ public class Client : MonoBehaviour
 
             using (Packet _packet = new Packet())
             {
-                SendData(_packet); 
+                SendData(_packet);
             }
         }
 
@@ -196,12 +196,12 @@ public class Client : MonoBehaviour
                 _packet.InsertInt(instance.myId);
                 if (socket != null)
                 {
-                    socket.BeginSend(_packet.ToArray(), _packet.Length(), null, null); 
+                    socket.BeginSend(_packet.ToArray(), _packet.Length(), null, null);
                 }
             }
             catch (Exception _ex)
             {
-                Debug.Log($"Error sending data to server via UDP: {_ex}"); 
+                Debug.Log($"Error sending data to server via UDP: {_ex}");
             }
         }
 
@@ -210,20 +210,19 @@ public class Client : MonoBehaviour
             try
             {
                 byte[] _data = socket.EndReceive(_result, ref endPoint);
-                socket.BeginReceive(ReceiveCallback, null); 
+                socket.BeginReceive(ReceiveCallback, null);
 
-                // Could pass if half a packet comes in. (Will be improved later.) 
-                if(_data.Length < 4)
+                if (_data.Length < 4)
                 {
-                    return; 
+                    // TODO: disconnect
+                    return;
                 }
 
-                HandleData(_data); 
-
+                HandleData(_data);
             }
-            catch 
+            catch
             {
-
+                // TODO: disconnect
             }
         }
 
@@ -232,7 +231,7 @@ public class Client : MonoBehaviour
             using (Packet _packet = new Packet(_data))
             {
                 int _packetLength = _packet.ReadInt();
-                _data = _packet.ReadBytes(_packetLength); 
+                _data = _packet.ReadBytes(_packetLength);
             }
 
             ThreadManager.ExecuteOnMainThread(() =>
@@ -240,11 +239,12 @@ public class Client : MonoBehaviour
                 using (Packet _packet = new Packet(_data))
                 {
                     int _packetId = _packet.ReadInt();
-                    packetHandlers[_packetId](_packet); 
+                    packetHandlers[_packetId](_packet);
                 }
-            }); 
+            });
         }
     }
+
     private void InitializeClientData()
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
