@@ -102,7 +102,7 @@ namespace GameServer
                 _packet.Write(_player.id);
                 _packet.Write(_player.rotation);
 
-                SendUDPDataToAll(_packet);
+                SendUDPDataToAll(_player.id, _packet);
             }
         }
 

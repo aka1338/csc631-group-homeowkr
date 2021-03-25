@@ -165,7 +165,7 @@ public class Packet : IDisposable
         buffer.AddRange(Encoding.ASCII.GetBytes(_value)); // Add the string itself
     }
 
-    /*
+    
     /// <summary>Adds a Vector3 to the packet.</summary>
     /// <param name="_value">The Vector3 to add.</param>
     public void Write(Vector3 _value)
@@ -183,7 +183,7 @@ public class Packet : IDisposable
         Write(_value.z);
         Write(_value.w);
     }
-    */
+    
     #endregion
 
     #region Read Data
@@ -356,7 +356,7 @@ public class Packet : IDisposable
         }
     }
 
-    /*
+    
     /// <summary>Reads a Vector3 from the packet.</summary>
     /// <param name="_moveReadPos">Whether or not to move the buffer's read position.</param>
     public Vector3 ReadVector3(bool _moveReadPos = true)
@@ -370,7 +370,7 @@ public class Packet : IDisposable
     {
         return new Quaternion(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
     }
-    */
+    
     #endregion
 
 
