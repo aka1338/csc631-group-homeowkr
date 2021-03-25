@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Numerics;
+using System.Numerics; 
 
 namespace GameServer
 {
@@ -16,7 +16,7 @@ namespace GameServer
         public Quaternion rotation;
 
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC;
-        private bool[] inputs;
+        private bool[] inputs; 
         public Player(int _id, string _username, Vector3 _spawnPosition)
         {
             id = _id;
@@ -24,7 +24,7 @@ namespace GameServer
             position = _spawnPosition;
             rotation = Quaternion.Identity;
 
-            inputs = new bool[4];
+            inputs = new bool[4]; 
         }
 
         public void Update()
@@ -65,7 +65,7 @@ namespace GameServer
         public void SetInput(bool[] _inputs, Quaternion _rotation)
         {
             inputs = _inputs;
-            rotation = _rotation;
+            rotation = _rotation; 
         }
     }
 }
