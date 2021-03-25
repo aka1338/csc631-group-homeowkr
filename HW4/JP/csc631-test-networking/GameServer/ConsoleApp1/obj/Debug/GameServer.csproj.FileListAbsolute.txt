@@ -5,3 +5,13 @@ E:\UnityRepo\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\GameServer.
 E:\UnityRepo\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
 E:\UnityRepo\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 E:\UnityRepo\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\bin\Debug\System.Numerics.Vectors.dll
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\bin\Debug\System.Numerics.Vectors.xml
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\GameServer.csprojAssemblyReference.cache
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\GameServer.csproj.CopyComplete
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+E:\UnityRepo\csc631-group-project\HW4\JP\csc631-test-networking\GameServer\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
